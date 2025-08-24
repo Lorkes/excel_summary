@@ -1,0 +1,67 @@
+openapi: 3.0.3
+info:
+  title: ''
+  version: 0.0.0
+paths:
+  /summary/:
+    post:
+      operationId: summary_create
+      description: |-
+        Upload a file with list of columns to summarize them
+
+        Example payload:
+        File: <file_to_upload>
+        Columns: price;quantity
+
+        Required fields:
+        - `File`: Excel spreadsheet file to analyze
+        - `Columns`: list of semicolon-separated (;) columns to summarize
+      tags:
+      - summary
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Summary'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Summary'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Summary'
+          description: ''
+components:
+  schemas:
+    Summary:
+      type: object
+      properties:
+        file:
+          type: string
+          format: uri
+          description: Excel spreadsheet (.xlsx) file to analyze
+        columns:
+          type: string
+          description: 'Semicolon(;)-separated list of column names to summarize,
+            ex: USD;CURRENT USD;CAD. Column name should match value in the cell (case-insensitive).
+            The preferred approach is to just copy-paste values instead of typing
+            to avoid typos. WARNING: results might be inaccurate if the provided column
+            name is in a merged cell'
+      required:
+      - columns
+      - file
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

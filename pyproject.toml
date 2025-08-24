@@ -1,0 +1,43 @@
+[project]
+name = "excel-summary"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "eugen",email = "example@example.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "djangorestframework (>=3.16.1,<4.0.0)",
+    "drf-spectacular (>=0.28.0,<0.29.0)",
+    "openpyxl (>=3.1.5,<4.0.0)",
+    "dotenv (>=0.9.9,<0.10.0)",
+    "psycopg[binary,pool] (>=3.2.9,<4.0.0)",
+    "gunicorn (>=23.0.0,<24.0.0)",
+    "whitenoise (>=6.9.0,<7.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "excel_summary", from = "src"}]
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.12.10"
+mypy = "^1.17.1"
+django-stubs = "^5.2.2"
+djangorestframework-stubs = "^3.16.2"
+types-openpyxl = "^3.1.5.20250822"
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "W", "I", "UP", "N"]
+
+[tool.mypy]
+follow_untyped_imports = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
