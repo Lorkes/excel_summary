@@ -1,19 +1,21 @@
 # Setup guide
 ## System requirements
 - Docker compose
+- git
 
 ## Quick setup
-1. Install docker compose following instructions at https://docs.docker.com/compose/install/ (select appropriate option for your operating system and depending on your preferences - command-line (CLI) or graphical (GUI) application)
-2. Clone the project repository via `git clone git@github.com:Lorkes/excel_summary.git`
-3. Navigate to the project directory
-4. Copy `example.env` file into new `.env` file
-5. It is recommended to update the values with some meaningful/custom ones, but default will work as well
-6. Execute
+1. install git from https://git-scm.com/downloads (if not installed)
+2. Install docker compose following instructions at https://docs.docker.com/compose/install/ (select appropriate option for your operating system and depending on your preferences - command-line (CLI) or graphical (GUI) application)
+3. Clone the project repository via `git clone git@github.com:Lorkes/excel_summary.git`
+4. Navigate to the project directory
+5. Copy `example.env` file into new `.env` file
+6. It is recommended to update the values with some meaningful/custom ones, but default will work as well
+7. Execute
     ```shell
     docker compose up --build
     ```
-7. You should be able to access http://127.0.0.1:8000/
-8. Congratulations! Your app is working now. You should be able to upload the file at http://127.0.0.1:8000/summary/ (or send it via Postman, note trailing `/`)
+8. You should be able to access http://127.0.0.1:8000/
+9. Congratulations! Your app is working now. You should be able to upload the file at http://127.0.0.1:8000/summary/ (or send it via Postman, note trailing `/`)
 
 # Troubleshooting
 ## Error: That port is already in use/Bind for 0.0.0.0:8000 failed: port is already allocated
